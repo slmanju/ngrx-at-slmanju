@@ -1,4 +1,4 @@
-import { Action, createReducer, createSelector, on, props } from '@ngrx/store';
+import { Action, createReducer, createSelector } from '@ngrx/store';
 
 export enum Gender {
   MALE, FEMALE

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { messageSelector, uppercaseSelector } from './app.reducer';
+import { selectMessage, selectUpperCaseMessage } from './app.reducer';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +10,15 @@ import { messageSelector, uppercaseSelector } from './app.reducer';
 })
 export class AppComponent {
 
-  stringSelector$: Observable<string>;
-  mapFnSelector$: Observable<string>;
-  fnSelector$: Observable<string>;
-  createSelectorSelector$: Observable<string>;
+  fromKey$: Observable<string>;
+  fromMapFn$: Observable<string>;
+  fromSelecctor$: Observable<string>;
+  fromUppercaseSelector$: Observable<string>;
   
-  constructor(private stringStore: Store<{ message: string }>,
-              private mapFnStore: Store<{ message: string }>,
-              private fnSelectorStore: Store<{ message: string }>,
-              private createSelectorStore: Store<{ message: string }>) {
-    this.stringSelector$ = stringStore.select('message');
-    this.mapFnSelector$ = mapFnStore.select((state) => state.message);
-    this.fnSelector$ = fnSelectorStore.select(messageSelector);
-    this.createSelectorSelector$ = createSelectorStore.select(uppercaseSelector);
+  constructor(private store: Store<{ message: string }>) {
+    this.fromKey$ = store.select('message');
+    this.fromMapFn$ = store.select((state) => state.message);
+    this.fromSelecctor$ = store.select(selectMessage);
+    this.fromUppercaseSelector$ = store.select(selectUpperCaseMessage);
   }
 }

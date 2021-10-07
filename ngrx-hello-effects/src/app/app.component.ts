@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { add, AppState, HttpState, remove, selectCodes } from './app.reducer';
+import { add, remove } from './store/app.actions';
+import { selectCodes } from './store/app.selector';
+import { AppState, HttpCodeState } from './store/app.state';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { add, AppState, HttpState, remove, selectCodes } from './app.reducer';
 })
 export class AppComponent {
 
-  code$: Observable<HttpState[]>;
+  code$: Observable<HttpCodeState[]>;
   statusCode: number;
   
   constructor(private httpStatusStore: Store<AppState>) {
@@ -22,10 +24,7 @@ export class AppComponent {
   }
 
   onRemove() {
-    this.httpStatusStore.dispatch(remove({
-      code: this.statusCode,
-      url: ''
-    }));
+    this.httpStatusStore.dispatch(remove({ code: this.statusCode }));
   }
 
 }

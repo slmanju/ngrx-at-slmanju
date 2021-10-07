@@ -8,6 +8,8 @@ Let's create a simple effect to modify the action.
 
 `ng add @ngrx/store@latest`
 
+`ng add @ngrx/effects@latest`
+
 `ng add @ngrx/store-devtools@latest`
 
 `ng serve`

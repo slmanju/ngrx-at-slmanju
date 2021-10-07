@@ -8,8 +8,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 
-import { statusCodeReducer } from './app.reducer';
-import { HttpUrlEffects } from './app.effects';
+import { statusCodeReducer } from './store/app.reducer';
+import { HttpUrlEffects } from './store/app.effects';
 
 @NgModule({
   declarations: [
